@@ -1,134 +1,32 @@
 package juns;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Dimension;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
-public class My_Page_Content extends JPanel{
-	
-	JPanel[] Panel;
-	JPanel[] My_Panel;
-	
-	
-	public My_Page_Content(String str){
-		this.setLayout(new GridLayout(1,2,10,0));
-		
-		Panel = new JPanel[2];
-		My_Panel = new JPanel[7];
-		JButton btn = new JButton("수정 및 홧인");
-		btn.setBackground(Color.RED);
-		btn.setForeground(Color.WHITE);
-		
-		Panel[0] = new JPanel(new BorderLayout());
-		Panel[0].setBackground(Color.WHITE);
-		Panel[1] = new JPanel(new BorderLayout());
-		Panel[1].setBackground(Color.WHITE);
-		
-		Panel[0].add(new JTableTest());
-		
-		My_Panel[0] = new JPanel(new BorderLayout());
-		My_Panel[1] = new JPanel(new BorderLayout());
-		My_Panel[2] = new JPanel(new BorderLayout());
-		My_Panel[3] = new JPanel(new BorderLayout(0,10));
-		My_Panel[4] = new JPanel(new GridLayout(10,1));
-		My_Panel[5] = new JPanel(new FlowLayout());
-		My_Panel[5].add(btn);
-		
-		Panel[1].add("Center", My_Panel[0]);
-		Panel[1].add("North", new JLabel("                 "));
-		Panel[1].add("West", new JLabel("         "));
-		Panel[1].add("East", new JLabel("         "));
-		Panel[1].add("South", new JLabel("               "));
-		Panel[1].add(My_Panel[0]);
-		
-		
-		
-		JPanel[] text_Panel = new JPanel[10];
-		
-		text_Panel[0] = new JPanel();
-		text_Panel[1] = new JPanel();
-		text_Panel[2] = new JPanel();
-		text_Panel[3] = new JPanel();
-		text_Panel[4] = new JPanel();
-		text_Panel[5] = new JPanel();
-		text_Panel[6] = new JPanel();
-		text_Panel[7] = new JPanel();
-		text_Panel[8] = new JPanel();
-		text_Panel[9] = new JPanel();
+public class JTableTest extends JPanel {
 
+	JTable table;
+	String[] column = {"날짜", "공지사항"};
+	String[][] content = {{"19/5/17", "위생관리 주의사항",},
+						  {"19/5/22", "이벤트 관련사항"}};
+	
+	
+	JScrollPane scroll;
+	JPanel panel, panel1;
+	public JTableTest() {
 		
-			
-		text_Panel[0].setBackground(Color.red);
-		text_Panel[0].setForeground(Color.WHITE);
-		text_Panel[0].add(new JLabel("가나다라바마사"));
-		text_Panel[2].setBackground(Color.red);
-		text_Panel[2].setForeground(Color.WHITE);
-		text_Panel[2].add(new JLabel("가나다라바마사"));
-		text_Panel[4].setBackground(Color.red);
-		text_Panel[4].setForeground(Color.WHITE);
-		text_Panel[4].add(new JLabel("가나다라바마사"));
-		text_Panel[6].setBackground(Color.red);
-		text_Panel[6].setForeground(Color.WHITE);
-		text_Panel[6].add(new JLabel("가나다라바마사"));
-		text_Panel[8].setBackground(Color.red);
-		text_Panel[8].setForeground(Color.WHITE);
-		text_Panel[8].add(new JLabel("가나다라바마사"));
-		
-		
-		My_Panel[4].add(text_Panel[0]);
-		My_Panel[4].add(new JLabel(""));
-		My_Panel[4].add(text_Panel[2]);
-		My_Panel[4].add(new JLabel(""));
-		My_Panel[4].add(text_Panel[4]);
-		My_Panel[4].add(new JLabel(""));
-		My_Panel[4].add(text_Panel[6]);
-		My_Panel[4].add(new JLabel(""));
-		My_Panel[4].add(text_Panel[8]);
-		My_Panel[4].add(new JLabel(""));
-		
-
-		
-		
-		My_Panel[0].add("Center", My_Panel[1]);
-		My_Panel[0].add("North", new JLabel("                 "));
-		My_Panel[0].add("West", new JLabel("         "));
-		My_Panel[0].add("East", new JLabel("         "));
-		My_Panel[0].add("South", new JLabel("               "));
-		My_Panel[1].add("Center", My_Panel[2]);
-		My_Panel[1].add("North", new JLabel("                 "));
-		My_Panel[1].add("West", new JLabel("         "));
-		My_Panel[1].add("East", new JLabel("         "));
-		My_Panel[1].add("South", new JLabel("               "));
-		My_Panel[2].add("Center", My_Panel[3]);
-		My_Panel[2].add("North", new JLabel("                 "));
-		My_Panel[2].add("West", new JLabel("         "));
-		My_Panel[2].add("East", new JLabel("         "));
-		My_Panel[2].add("South", new JLabel("               "));
-		My_Panel[3].add("Center", My_Panel[4]);
-		My_Panel[3].add("South", My_Panel[5]);
-		
-		Panel[0].setBackground(Color.WHITE);
-		Panel[1].setBackground(Color.WHITE);
-		My_Panel[0].setBackground(Color.RED);
-		My_Panel[1].setBackground(Color.RED);
-		My_Panel[2].setBackground(Color.WHITE);
-		My_Panel[3].setBackground(Color.RED);
-		My_Panel[4].setBackground(Color.WHITE);
-		My_Panel[5].setBackground(Color.WHITE);
-		
-		
-		this.add(Panel[0]);
-		this.add(Panel[1]);
+		table = new JTable(content, column);
+		scroll = new JScrollPane(table);
+		scroll.getViewport().setPreferredSize(new Dimension(480, 580));
+		panel = new JPanel();
+	
+		panel.add(scroll);
+		this.setBackground(Color.white);
+		this.add(panel);
 	}
 	
-	public static void main(String[] args) {
-		new My_Page_Content("마이페지");
-	}
-
 }
